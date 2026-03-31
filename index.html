@@ -60,12 +60,15 @@ button {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, pink, purple);
+  background: black;
   color: white;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  filter: blur(1px);
+  
+  animation: bwFlicker 2s infinite;
 }
 
 /* Text animation */
@@ -88,6 +91,15 @@ button {
   100% {transform: translate(0);}
 }
 
+ @keyframes bwFlicker {
+  0% { background: black; }
+  20% { background: #111; }
+  40% { background: white; }
+  60% { background: #222; }
+  80% { background: black; }
+  100% { background: white; }
+}
+
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -99,7 +111,7 @@ button {
 
 <!-- Câu hỏi -->
 <div id="question">
-  <h1>Cậu có muốn biết bí mật không? 😏</h1>
+  <h1>Mọi người có muốn biết bí mật của Hà khônggg?</h1>
   <button onclick="yesClick()">Có</button>
   <button onclick="noClick()">Không</button>
   <p id="noText"></p>
@@ -117,7 +129,7 @@ button {
 
 <script>
 function noClick() {
-  document.getElementById("noText").innerHTML = "Không nghe thì thôi 😒";
+  document.getElementById("noText").innerHTML = "Không nghe thì thôiiiii, dỗiiiii";
 }
 
 function yesClick() {
@@ -134,20 +146,19 @@ function yesClick() {
     if (percent >= 100) {
       clearInterval(interval);
     }
-  }, 1200); // ~2 phút (100 * 1.2s)
+  }, 1200);
 
-  // Sau 2 phút chuyển sang troll
+
   setTimeout(() => {
     document.getElementById("loading").style.display = "none";
     document.getElementById("prank").style.display = "flex";
 
     document.body.style.animation = "shake 0.3s";
 
-    typeText("Ú òa 🤡 bị lừa rồi nha!\nChúc bạn 1/4 vui vẻ 💖");
-  }, 120000); // 120000ms = 2 phút
+    typeText("Ú òa bị lừa rồi nha!\nChúc mọi người 1/4 vui vẻee");
+  }, 120000); 
 }
 
-// Gõ chữ
 function typeText(text) {
   let i = 0;
   const msg = document.getElementById("message");
